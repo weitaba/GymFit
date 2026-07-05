@@ -1,115 +1,153 @@
-# GymFit AI — 智能健身助手
+<p align="center">
+  <img src="docs/images/logo.png" alt="GymFit AI" width="120" />
+</p>
 
-AI 驱动的健身应用，三大模块：
+<h1 align="center">GymFit AI</h1>
 
-- **🧍 体态检测** — 脊柱侧弯、翼状肩胛、腿型、骨盆倾斜、圆肩、头前倾
-- **🏋️ 动作检测** — 深蹲、卧推、硬拉、肩推、二头弯举、引体向上
-- **🥗 减脂助手** — 饮食推荐、碳循环/生酮计划、卡路里记录
+<p align="center">
+  AI 驱动的智能健身助手 — 拍照上传，秒得专业分析
+</p>
 
-## 技术栈
+<p align="center">
+  <img src="https://img.shields.io/badge/license-MIT-blue" />
+  <img src="https://img.shields.io/badge/python-3.12-green" />
+  <img src="https://img.shields.io/badge/react-19-61dafb" />
+  <img src="https://img.shields.io/badge/docker-ready-2496ed" />
+</p>
+
+<p align="center">
+  <em>![](docs/images/home.png)</em>
+</p>
+
+---
+
+## ✨ 功能
+
+<table>
+<tr>
+<td width="33%">
+<h3 align="center">🧍 体态检测</h3>
+<p align="center"><em>![](docs/images/posture.png)</em></p>
+<p>上传体态照片，AI 分析脊柱侧弯等潜在问题，给出矫正建议</p>
+</td>
+<td width="33%">
+<h3 align="center">🏋️ 动作检测</h3>
+<p align="center"><em>![](docs/images/bench_press.png)</em></p>
+<p>上传训练视频，多角度逐项检测动作规范性，对比标准参照</p>
+</td>
+<td width="33%">
+<h3 align="center">🥗 减脂助手</h3>
+<p align="center"><em>![](docs/images/diet.png)</em></p>
+<p>AI 饮食推荐、碳循环/生酮计划、AI 估算热量的卡路里记录</p>
+</td>
+</tr>
+</table>
+
+---
+
+## 🎬 演示
+
+<p align="center">
+  <em>![](docs/images/demo.gif)</em>
+</p>
+
+---
+
+## 🚀 快速开始
+
+### 1. 配置
+
+```bash
+git clone https://github.com/weitaba/GymFit.git
+cd GymFit/backend
+cp .env.example .env
+# 编辑 .env，填入 API Key（支持 Claude / OpenAI / 阿里云百炼）
+```
+
+### 2. Docker 一键启动
+
+```bash
+docker compose up -d --build
+```
+
+访问 `http://localhost:5173`
+
+### 3. 或手动启动
+
+```bash
+# 终端1 - 后端
+cd backend
+python3 -m venv venv && source venv/bin/activate
+pip install -r requirements.txt
+uvicorn main:app --reload --port 8000
+
+# 终端2 - 前端
+cd frontend
+npm install && npm run dev
+```
+
+---
+
+## 🏗️ 架构
+
+```
+用户上传视频/图片
+  → 视频抽帧（OpenCV 帧差法检测动作周期）
+  → 与标准参照逐帧对比
+  → AI 视觉模型分析（Claude / OpenAI / 百炼）
+  → 结构化报告返回
+```
+
+### 技术栈
 
 | 层 | 选型 |
 |---|---|
-| 后端 | Python FastAPI |
+| 后端 | FastAPI + OpenCV + PyYAML |
 | 前端 | React 19 + TypeScript + Vite |
-| AI | Claude Vision / OpenAI GPT-4V（可插拔） |
-| 配置 | YAML 文件（每种检测一个） |
-| 数据 | 无数据库，内存缓存 + 前端 localStorage |
+| AI | 可插拔 Provider（Claude Vision / GPT-4V / 通义千问 VL） |
+| 存储 | 无数据库 — 内存缓存 + 前端 localStorage |
+| 部署 | Docker + Nginx |
 
-## 快速开始
+---
 
-### 1. 配置 API Key
-
-```bash
-cd backend
-cp .env.example .env
-# 编辑 .env，至少填一个 API Key：
-#   ANTHROPIC_API_KEY=sk-ant-...       (Claude)
-#   OPENAI_API_KEY=sk-...              (OpenAI)
-#   DASHSCOPE_API_KEY=sk-...           (阿里云百炼)
-```
-
-### 2. 启动后端
-
-**首次运行**需要创建虚拟环境并安装依赖：
-
-```bash
-cd backend
-python3 -m venv venv
-source venv/bin/activate        # Linux/Mac
-# venv\Scripts\activate         # Windows
-pip install -r requirements.txt
-```
-
-**之后每次启动**只需激活环境并运行：
-
-```bash
-cd backend
-
-uvicorn main:app --reload --port 8000
-```
-
-> **注意：** `uvicorn` 装在 venv 虚拟环境里，必须先 `source venv/bin/activate` 才能找到。
-> 如果提示 `command not found: uvicorn`，说明没激活 venv。
-
-### 3. 启动前端
-
-```bash
-cd frontend
-npm install          # 首次运行
-npm run dev          # 启动开发服务器
-```
-
-访问 http://localhost:5173
-
-## 项目结构
+## 📁 项目结构
 
 ```
-gym-project/
 ├── backend/
-│   ├── main.py                  # FastAPI 入口
-│   ├── config/
-│   │   ├── loader.py            # YAML 配置加载器
-│   │   └── detection_types/     # 检测类型配置（YAML）
-│   │       ├── posture/         # 体态检测 (6个)
-│   │       ├── movement/        # 动作检测 (6个)
-│   │       └── diet/            # 减脂方案 (3个)
-│   ├── providers/               # AI 接口抽象
-│   │   ├── base.py              # AIProvider ABC
-│   │   ├── claude.py            # Claude 实现
-│   │   ├── openai.py            # OpenAI 实现
-│   │   └── bailian.py           # 阿里云百炼实现
-│   ├── routers/                 # API 路由
-│   ├── services/                # 业务逻辑
-│   └── models/                  # Pydantic schemas
+│   ├── config/detection_types/  ← YAML 检测配置（新增动作只需加文件）
+│   ├── providers/               ← AI 接口（Claude/OpenAI/百炼）
+│   ├── video_strategies/        ← 视频抽帧策略（每种动作独立策略）
+│   ├── routers/                 ← API 路由
+│   └── services/                ← 业务逻辑
 ├── frontend/
-│   └── src/
-│       ├── pages/               # 页面组件
-│       ├── components/          # 共享组件
-│       ├── api/                 # API 调用
-│       └── types/               # TS 类型定义
-└── README.md
+│   └── src/pages/               ← 页面组件
+├── reference/                   ← 标准动作参照图片
+├── docker-compose.yml
+└── docs/images/                 ← 截图
 ```
 
-## 如何新增检测类型
+---
 
-1. 在 `backend/config/detection_types/{category}/` 下新建 YAML 文件
-2. 填写 `id`, `name`, `category`, `system_prompt` 等字段
-3. 重启后端，新类型自动出现在前端列表中
+## 📸 需要添加的截图
 
-## API 概览
+在 `docs/images/` 目录下放置以下图片，然后替换 README 中的占位标记：
 
-| 方法 | 路径 | 说明 |
-|------|------|------|
-| GET | `/api/detection-types` | 列出检测类型 |
-| GET | `/api/detection-types/{id}` | 类型详情 |
-| POST | `/api/analyze` | 图片分析（multipart） |
-| POST | `/api/diet/recommend` | 饮食分析（JSON） |
-| GET | `/api/results/{id}` | 获取缓存结果 |
+| 文件 | 内容 | 建议尺寸 |
+|------|------|----------|
+| `logo.png` | 应用图标/Logo | 240×240 |
+| `home.png` | 首页截图 | 1200×800 |
+| `posture.png` | 体态检测流程（上传→结果） | 1200×800 |
+| `bench_press.png` | 卧推动作分析结果 | 1200×800 |
+| `diet.png` | 饮食推荐或卡路里记录 | 1200×800 |
+| `demo.gif` | 完整操作流程动图 | 800×600 |
 
-## 隐私说明
+> **截图技巧**：用浏览器开发者工具设为手机模式（375×812），截图更紧凑好看。GIF 用 [ScreenToGif](https://www.screentogif.com/)（Windows）或 [Kap](https://getkap.co/)（Mac）录制。
 
-- 图片通过加密连接发送至 AI 服务商分析，完成后不存储在服务器
-- 卡路里记录数据存储在浏览器本地，不上传至服务器
-- 分析结果缓存 15 分钟后自动清除
-source venv/bin/activate
+---
+
+## 🤝 贡献
+
+欢迎提交 Issue 和 PR。新增动作检测只需：
+1. 在 `backend/config/detection_types/movement/` 下新建 YAML
+2. 在 `reference/` 下放标准参照图片
+3. （可选）在 `video_strategies/` 下实现自定义抽帧策略
