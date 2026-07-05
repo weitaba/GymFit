@@ -116,7 +116,7 @@ npm install && npm run dev
 
 ---
 
-## 📸 需要添加的截图
+<!-- ## 📸 需要添加的截图
 
 在 `docs/images/` 目录下放置以下图片，然后替换 README 中的占位标记：
 
@@ -127,7 +127,7 @@ npm install && npm run dev
 | `bench_press.png` | 卧推动作分析结果 | 1200×800 |
 | `diet.png` | 饮食推荐或卡路里记录 | 1200×800 |
 
-> **截图技巧**：用浏览器开发者工具设为手机模式（375×812），截图更紧凑好看。GIF 用 [ScreenToGif](https://www.screentogif.com/)（Windows）或 [Kap](https://getkap.co/)（Mac）录制。
+> **截图技巧**：用浏览器开发者工具设为手机模式（375×812），截图更紧凑好看。GIF 用 [ScreenToGif](https://www.screentogif.com/)（Windows）或 [Kap](https://getkap.co/)（Mac）录制。 -->
 
 ---
 
