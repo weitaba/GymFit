@@ -16,7 +16,7 @@
 </p>
 
 <p align="center">
-  <em>![](docs/images/home.png)</em>
+  <img src="docs/images/home.png" alt="首页截图" width="600" />
 </p>
 
 ---
@@ -27,17 +27,17 @@
 <tr>
 <td width="33%">
 <h3 align="center">🧍 体态检测</h3>
-<p align="center"><em>![](docs/images/posture.png)</em></p>
+<p align="center"><img src="docs/images/posture.png" width="280" /></p>
 <p>上传体态照片，AI 分析脊柱侧弯等潜在问题，给出矫正建议</p>
 </td>
 <td width="33%">
 <h3 align="center">🏋️ 动作检测</h3>
-<p align="center"><em>![](docs/images/bench_press.png)</em></p>
+<p align="center"><img src="docs/images/bench_press.png" width="280" /></p>
 <p>上传训练视频，多角度逐项检测动作规范性，对比标准参照</p>
 </td>
 <td width="33%">
 <h3 align="center">🥗 减脂助手</h3>
-<p align="center"><em>![](docs/images/diet.png)</em></p>
+<p align="center"><img src="docs/images/diet.png" width="280" /></p>
 <p>AI 饮食推荐、碳循环/生酮计划、AI 估算热量的卡路里记录</p>
 </td>
 </tr>
@@ -48,7 +48,7 @@
 ## 🎬 演示
 
 <p align="center">
-  <em>![](docs/images/demo.gif)</em>
+  <img src="docs/images/demo.gif" alt="演示动图" width="600" />
 </p>
 
 ---
