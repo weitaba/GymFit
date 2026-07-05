@@ -128,7 +128,7 @@ npm install && npm run dev
 | `diet.png` | 饮食推荐或卡路里记录 | 1200×800 |
 
 > **截图技巧**：用浏览器开发者工具设为手机模式（375×812），截图更紧凑好看。GIF 用 [ScreenToGif](https://www.screentogif.com/)（Windows）或 [Kap](https://getkap.co/)（Mac）录制。 -->
-<!-- --- -->
+---
 
 
 ## 🤝 贡献
