@@ -15,10 +15,6 @@
   <img src="https://img.shields.io/badge/docker-ready-2496ed" />
 </p>
 
-<p align="center">
-  <img src="docs/images/home.png" alt="首页截图" width="600" />
-</p>
-
 ---
 
 ## ✨ 功能
@@ -42,14 +38,6 @@
 </td>
 </tr>
 </table>
-
----
-
-## 🎬 演示
-
-<p align="center">
-  <img src="docs/images/demo.gif" alt="演示动图" width="600" />
-</p>
 
 ---
 
@@ -135,11 +123,9 @@ npm install && npm run dev
 | 文件 | 内容 | 建议尺寸 |
 |------|------|----------|
 | `logo.png` | 应用图标/Logo | 240×240 |
-| `home.png` | 首页截图 | 1200×800 |
-| `posture.png` | 体态检测流程（上传→结果） | 1200×800 |
+| `posture.png` | 体态检测流程 | 1200×800 |
 | `bench_press.png` | 卧推动作分析结果 | 1200×800 |
 | `diet.png` | 饮食推荐或卡路里记录 | 1200×800 |
-| `demo.gif` | 完整操作流程动图 | 800×600 |
 
 > **截图技巧**：用浏览器开发者工具设为手机模式（375×812），截图更紧凑好看。GIF 用 [ScreenToGif](https://www.screentogif.com/)（Windows）或 [Kap](https://getkap.co/)（Mac）录制。
 
