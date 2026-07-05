@@ -1,0 +1,21 @@
+services:
+  backend:
+    build: ./backend
+    container_name: gymfit-backend
+    ports:
+      - "18001:8000"
+    env_file:
+      - ./backend/.env
+    volumes:
+      - ./reference:/app/../reference
+      - ./frames_dump:/app/../frames_dump
+    restart: unless-stopped
+
+  frontend:
+    build: ./frontend
+    container_name: gymfit-frontend
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+    restart: unless-stopped

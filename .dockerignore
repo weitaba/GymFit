@@ -1,0 +1,10 @@
+node_modules
+venv
+__pycache__
+*.pyc
+.env
+*.egg-info
+dist
+.git
+frontend/dist
+frames_dump

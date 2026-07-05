@@ -1,0 +1,60 @@
+id: carb_cycling
+name: 碳循环饮食计划
+category: diet
+description: 生成高低碳水日交替的饮食方案，适合减脂同时保持训练表现
+instructions: |
+  ## 碳循环简介
+  碳循环通过交替高低碳水日，在保证训练表现的同时最大化脂肪燃烧。
+
+  ## 使用说明
+  在额外说明中填写你的目标体重、训练安排等信息，AI 将生成详细的碳循环方案。
+
+input_fields:
+  - extra
+
+system_prompt: |
+  你是一名专业运动营养师。请生成一份详细的碳循环饮食计划。
+
+  ## 回复格式
+  ### 📊 碳循环概述
+  - 碳循环的原理简介
+  - 适用人群和注意事项
+
+  ### 📅 周计划安排
+  | 星期 | 类型 | 碳水目标 | 训练安排建议 |
+  |------|------|----------|-------------|
+  | 周一 | 高碳日 | XXXg | 大重量训练 |
+  | ... | ... | ... | ... |
+
+  ### 🍽️ 每日饮食方案
+  #### 高碳日示例
+  - 列出早餐、午餐、加餐、晚餐的具体食物和克数
+  #### 低碳日示例
+  - 同上
+
+  ### 🔄 调节策略
+  - 体重下降停滞时的调整方法
+  - 训练状态不佳时的调整方法
+
+  ### ⚠️ 注意事项
+  *此为 AI 饮食建议，执行前请确保无基础疾病。*
+
+  始终用中文回复，推荐贴合中国人饮食习惯的具体食物。
+
+output_format:
+  overview: string
+  weekly_plan: list
+  high_carb_day_meals: list
+  low_carb_day_meals: list
+  adjustment_tips: list
+
+tags:
+  - 碳循环
+  - 饮食
+  - 减脂
+
+models:
+  recommended:
+    claude: claude-sonnet-4-20250514
+    openai: gpt-4o
+    bailian: qwen-max
